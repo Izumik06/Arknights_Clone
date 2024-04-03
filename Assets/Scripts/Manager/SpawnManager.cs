@@ -23,13 +23,13 @@ namespace Izumik
         {
 
         }
-        IEnumerator SpawnEnemy()
-        {
-            for(int i = 1; i < dispatchLog.Length; i++)
-            {
-                for(int j = 0; j < dispatchLog[i, 1])
-            }
-        }
+        //IEnumerator SpawnEnemy()
+        //{
+        //    for(int i = 1; i < dispatchLog.Length; i++)
+        //    {
+        //        //for(int j = 0; j < dispatchLog[i, 1])
+        //    }
+        //}
         public static SpawnManager Instance
         {
             get

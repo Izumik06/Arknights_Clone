@@ -23,23 +23,23 @@ namespace Izumik
 
             return table;
         }
-        public List<SpawnData> TextToSpawnData(string[,] table)
-        {
-            List<SpawnData> dispatchLog = new List<SpawnData>();
-            for (int i = 1; i < table.Length; i++)
-            {
-                dispatchLog.Add(new SpawnData(table[i, 0], int.Parse(table[i, 1], float.Parse(table[i,2]), float.Parse(table[i,3]), ))
-            }
-        }
-        public List<Coo> StringToCoo(string text)
-        {
-            List<Coo> cooList = new List<Coo>();
+        //public List<SpawnData> TextToSpawnData(string[,] table)
+        //{
+        //    List<SpawnData> dispatchLog = new List<SpawnData>();
+        //    for (int i = 1; i < table.Length; i++)
+        //    {
+        //        dispatchLog.Add(new SpawnData(table[i, 0], int.Parse(table[i, 1], float.Parse(table[i,2]), float.Parse(table[i,3]), ))
+        //    }
+        //}
+        //public List<Coo> StringToCoo(string text)
+        //{
+        //    List<Coo> cooList = new List<Coo>();
         
-            for(int i = 0; i < text.Split(" ").Length; i++)
-            {
-                cooList.Add(new Coo(text.Split(" ")[i]))
-            }
-        }
+        //    for(int i = 0; i < text.Split(" ").Length; i++)
+        //    {
+        //        cooList.Add(new Coo(text.Split(" ")[i]))
+        //    }
+        //}
     }//asdf
     public class SpawnData
     {
@@ -71,7 +71,7 @@ namespace Izumik
         public Coo(string text)
         {
             x = int.Parse(text.Split(".")[1]);
-            y = in
+            //y = in
         }
     }
 }
