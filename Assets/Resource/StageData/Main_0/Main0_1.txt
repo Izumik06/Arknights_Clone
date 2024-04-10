@@ -1,11 +1,11 @@
-Type	Count	SpawnTime	SpawnDelay	Root	DefensePoint	UseAstar
-경로	2	1	0.5	D.4 C.4 C.2 D.1	D.1	TRUE
-원석충	1	5	1	D.4 C.4 C.2 D.2	D.1	TRUE
-원석충	2	16	2	D.4 C.4 C.2 D.2	D.1	TRUE
-경로	2	25	0.5	D.4 C.4 C.2 D.1	D.1	TRUE
-원석충	2	29	0.7	D.4 C.4 C.2 D.2	D.1	TRUE
-원석충	1	34	1	D.4 C.4 C.2 D.2	D.1	TRUE
-원석충	2	45	0.7	D.4 C.4 C.2 D.2	D.1	TRUE
-원석충	2	52	10.7	D.4 C.4 C.2 D.3	D.1	TRUE
-경로	2	59.7	0.5	C.8 D.4 C.4 C.2 D.2	D.1	FALSE
-병사	1	63.7	1	C.8 W.3 D.4 C.4 C.2 D.2	D.1	FALSE
+Type	Count	SpawnTime	SpawnDelay	SpawnPoint	Root	WaitNode	PosError	DefensePoint	UseAstar
+Root	2	0	0.5	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Originium_Slug	1	5	1	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Originium_Slug	2	16	2	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Root	2	24	0.5	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Originium_Slug	2	29	0.7	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Originium_Slug	1	34	1	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Originium_Slug	2	45	0.7	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Originium_Slug	2	52	0.7	8.2	3.3 3.2 1.2 1.3 0.3			0.3	TRUE
+Root	2	58.7	0.5	8.2	7.2 3.3 3.2 1.2 1.3 0.3			0.3	FALSE
+Soldier	1	63.7	1	8.2	7.2 3.3 3.2 1.2 1.3 0.3	7.2.3		0.3	FALSE

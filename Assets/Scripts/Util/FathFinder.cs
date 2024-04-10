@@ -52,7 +52,7 @@ namespace Izumik
             }
                 
         }
-        public void PathFinding(Node startNode, Node targetNode)
+        public List<Node> PathFinding(Node startNode, Node targetNode)
         {
             GetMap();
 
@@ -87,9 +87,8 @@ namespace Izumik
                         FinalNodeList.Add(TargetCurNode);
                         TargetCurNode = TargetCurNode.ParentNode;
                     }
-                    FinalNodeList.Add(StartNode);
                     FinalNodeList.Reverse();
-                    return;
+                    return FinalNodeList;
                 }
                 OpenListAdd(CurNode.x + 1, CurNode.y);
                 OpenListAdd(CurNode.x - 1, CurNode.y);
@@ -103,6 +102,7 @@ namespace Izumik
                 OpenListAdd(CurNode.x + 1, CurNode.y - 1);
 
             }
+            return null;
         }
 
         void OpenListAdd(int checkX, int checkY)
@@ -110,7 +110,6 @@ namespace Izumik
             //상하좌우 범위 벗어나지 X, 이동 가능, 닫
             if (checkX >= 0 && checkX < sizeX && checkY >= 0 && checkY < sizeY && NodeArray[checkX, checkY].canMove && !ClosedList.Contains(NodeArray[checkX, checkY]))
             {
-                Debug.Log(1);
                 //대각선 이동 허용시 벽 사이로 통과 방지
                 if (!NodeArray[CurNode.x, checkY].canMove && !NodeArray[checkX, CurNode.y].canMove) return;
                 //코너 가로질러 가기 방지, 이동 중 수직수평 장애물이 있으면 안됨
@@ -122,7 +121,6 @@ namespace Izumik
 
                 if(moveCost < neighborNode.G || !OpenList.Contains(neighborNode))
                 {
-                    Debug.Log(1);
                     neighborNode.G = moveCost;
                     neighborNode.H = (Mathf.Abs(neighborNode.x - TargetNode.x) + Mathf.Abs(neighborNode.y - TargetNode.y));
                     neighborNode.ParentNode = CurNode;

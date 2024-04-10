@@ -25,16 +25,16 @@ namespace Izumik
         }
         private void Start()
         {
-            SetStage();
+
         }
         //맵 불러오고 정보 입력
-        void SetStage()
+        public void SetStage()
         {
             curStageObj = stages[curStage - 1];
             curStageObj.SetActive(true);
             stage = curStageObj.GetComponent<Stage>();
 
-            SpawnManager.Instance.dispatchLog = GameObject.Find("Util").GetComponent<ExcelReader>().Decoding(stage.dispatchLog);
+            SpawnManager.Instance.dispatchLog = GameObject.Find("Util").GetComponent<ExcelReader>().TextToSpawnData(GameObject.Find("Util").GetComponent<ExcelReader>().Decoding(stage.dispatchLog));
 
             GameManager.Instance.cost = stage.initialCost;
             GameManager.Instance.targetHP = stage.targetHP;

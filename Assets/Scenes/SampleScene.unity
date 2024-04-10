@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 74829272}
   - component: {fileID: 74829271}
   - component: {fileID: 74829273}
+  - component: {fileID: 74829274}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -341,6 +342,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282bc01037785784f9cfdfbc04169aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dispatchLog: []
+  enemyList:
+  - {fileID: 5121407829357872199, guid: 83191d7ef79bf524db74f77ee97bfaad, type: 3}
+  - {fileID: 4002577499869898189, guid: 838ba2399a5022d4eb1bdda7bb674ebd, type: 3}
+  - {fileID: 4596490816847870372, guid: 2224380929cdccc46a44f47085649c97, type: 3}
+--- !u!114 &74829274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74829269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633667c1d595784428049f0b027c36bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPlaceNum: 0
+  cost: 0
+  targetHP: 0
+  isStartGame: 0
 --- !u!1 &86961211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,9 +1668,10 @@ MonoBehaviour:
   cameraPos: {x: 0, y: 8, z: -1}
   sizeX: 9
   sizeY: 6
-  dispatchLog: {fileID: 4900000, guid: 8dac1229c34620b4498f0f86c8bf08c6, type: 3}
-  initialCost: 0
-  targetHP: 0
+  dispatchLog: {fileID: 4900000, guid: 310d0bc73a5c3d74e829e614e5d64f6e, type: 3}
+  initialCost: 10
+  targetHP: 20
+  canPlaceNum: 9
 --- !u!1 &384760536
 GameObject:
   m_ObjectHideFlags: 0
