@@ -8,7 +8,7 @@ namespace Izumik
     {
         public Vector3 cameraPos;
         public int sizeX, sizeY;
-        public TextAsset dispatchLog;
+        public string stageName;
         public int initialCost;
         public int targetHP;
         public int canPlaceNum;

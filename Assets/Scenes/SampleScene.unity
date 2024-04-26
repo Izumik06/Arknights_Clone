@@ -1668,7 +1668,7 @@ MonoBehaviour:
   cameraPos: {x: 0, y: 8, z: -1}
   sizeX: 9
   sizeY: 6
-  dispatchLog: {fileID: 4900000, guid: 310d0bc73a5c3d74e829e614e5d64f6e, type: 3}
+  stageName: 0-1
   initialCost: 10
   targetHP: 20
   canPlaceNum: 9

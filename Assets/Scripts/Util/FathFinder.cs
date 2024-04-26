@@ -20,6 +20,11 @@ namespace Izumik
             x = _x;
             y = _y;
         }
+        public Node(string coo)
+        {
+            x = int.Parse(coo.Split(".")[0]);
+            y = int.Parse(coo.Split(".")[1]);
+        }
         public Node(int _x, int _y)
         {
             canMove = true;
