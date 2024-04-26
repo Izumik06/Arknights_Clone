@@ -50,12 +50,7 @@ namespace Izumik
         public GameObject curMap;
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PathFinding(new Node(8, 2), new Node(0, 3));
-                ShowFath();
-            }
-                
+
         }
         public List<Node> PathFinding(Node startNode, Node targetNode)
         {

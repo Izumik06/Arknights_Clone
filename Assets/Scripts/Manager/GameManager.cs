@@ -8,7 +8,7 @@ namespace Izumik
     {
         private static GameManager instance;
 
-        public int canPlaceNum;
+        public int deploymentSlots;
         public int cost;
         public int targetHP;
 

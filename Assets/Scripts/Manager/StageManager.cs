@@ -41,7 +41,7 @@ namespace Izumik
 
             GameManager.Instance.cost = stage.initialCost;
             GameManager.Instance.targetHP = stage.targetHP;
-            GameManager.Instance.canPlaceNum = stage.canPlaceNum;
+            GameManager.Instance.deploymentSlots = stage.deploymentSlots;
         }
 
         //DB에서 맵 로그 로드
@@ -62,6 +62,7 @@ namespace Izumik
                 dr = new SqlCommand("select * from [" + stage.stageName + "]", conn).ExecuteReader();
                 for (int i = 0; i < dispatchCount; i++)
                 {
+                    //튜플 읽어와서 SpawnManager로 변환
                     dr.Read();
                     float spawnTime = (float)dr.GetDouble(0);
                     string type = dr.GetString(1);
@@ -71,20 +72,20 @@ namespace Izumik
                     Debug.Log(dr.GetString(5));
                     List<Node> root = TypeTranslator.Instance.StringToRoot(dr.GetString(5));
                     List<WaitNode> waitNode;
-                    try
+                    if (!dr.IsDBNull(6))
                     {
                         waitNode = TypeTranslator.Instance.StringToWaitnode(dr.GetString(6));
                     }
-                    catch
+                    else
                     {
                         waitNode = new List<WaitNode>();
                     }
                     List<float> posError;
-                    try
+                    if (!dr.IsDBNull(7))
                     {
                         posError = TypeTranslator.Instance.StringToPosError(dr.GetString(7));
                     }
-                    catch
+                    else
                     {
                         posError = new List<float>();
                     }

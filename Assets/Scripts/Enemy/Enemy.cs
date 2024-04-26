@@ -28,6 +28,8 @@ namespace Izumik
         public float speed;
         public float range;
         public float posError;
+
+        //target를 거쳐가는 경로 탐색 
         public void Findpath(List<Node> targets, Node spawnPoint)
         {
             roots = new List<Node>();

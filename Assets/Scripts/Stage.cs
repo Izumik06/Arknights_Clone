@@ -11,6 +11,6 @@ namespace Izumik
         public string stageName;
         public int initialCost;
         public int targetHP;
-        public int canPlaceNum;
+        public int deploymentSlots;
     }
 }
