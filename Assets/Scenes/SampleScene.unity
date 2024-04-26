@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 74829271}
   - component: {fileID: 74829273}
   - component: {fileID: 74829274}
+  - component: {fileID: 74829275}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -587,9 +588,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deploymentSlots: 0
-  cost: 0
   targetHP: 0
+  maxEnemyCount: 0
+  curEnemyCount: 0
+  cost: 0
+  costDelay: 0
+  costSpeed: 0
   isStartGame: 0
+  isPause: 0
+  gameSpeed: 1
+--- !u!114 &74829275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74829269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e99ea59ecd449f40ae719477f1e6b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseIcon: {fileID: 220461093}
+  restartIcon: {fileID: 118020817}
+  pauseObj: {fileID: 655154162}
+  gameSpeedText: {fileID: 868881218}
+  normalSpeedIcon: {fileID: 1118783575}
+  highSpeedIcon: {fileID: 257948554}
+  enemyCountText: {fileID: 114057017}
+  targetHpText: {fileID: 1522231916}
+  costText: {fileID: 1306714780}
+  costSlider: {fileID: 1099970722}
+  deploymentSlotText: {fileID: 681934527}
 --- !u!1 &86961211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1050,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 25}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118020819
 MonoBehaviour:
@@ -2611,13 +2641,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d1259d6ac49a1469001703827db5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPos: {x: 0, y: 6.5, z: 0.25}
+  cameraPos: {x: 4, y: 6.5, z: 0.25}
+  cameraRot: {x: 70, y: 0, z: 0}
   sizeX: 9
   sizeY: 6
   stageName: 0-1
   initialCost: 10
+  costSpeed: 1
   targetHP: 20
-  deploymentSlots: 0
+  enemyCount: 11
+  deploymentSlots: 8
 --- !u!1 &384760536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,7 +5471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 837344092}
   m_Layer: 5
-  m_Name: DefensePoint
+  m_Name: TargetHp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5605,7 +5638,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &868881218
 MonoBehaviour:
@@ -7232,7 +7265,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1071501456}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 74829275}
+        m_TargetAssemblyTypeName: Izumik.UIManager, Assembly-CSharp
+        m_MethodName: SpeedBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1071501456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7306,8 +7351,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -10}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: 14.1, y: -8.1}
+  m_SizeDelta: {x: 23, y: 23}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1092886756
 MonoBehaviour:
@@ -7463,7 +7508,7 @@ GameObject:
   - component: {fileID: 1099970721}
   - component: {fileID: 1099970722}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: CostSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8761,8 +8806,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 33
+  m_fontSizeBase: 33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10431,8 +10476,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10972,7 +11017,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1663068537}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 74829275}
+        m_TargetAssemblyTypeName: Izumik.UIManager, Assembly-CSharp
+        m_MethodName: PauseBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1663068537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13627,10 +13684,10 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 74829272}
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 349333782}
-  - {fileID: 74829272}
   - {fileID: 1233549361}
   - {fileID: 1744242187}
   - {fileID: 707164046}

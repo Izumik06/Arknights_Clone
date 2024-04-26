@@ -39,9 +39,14 @@ namespace Izumik
 
             SpawnManager.Instance.dispatchLog = LoadDispatch();
 
+            Camera.main.transform.position = stage.cameraPos;
+            Camera.main.transform.eulerAngles = stage.cameraRot;
+
             GameManager.Instance.cost = stage.initialCost;
+            GameManager.Instance.costSpeed = stage.costSpeed;
             GameManager.Instance.targetHP = stage.targetHP;
             GameManager.Instance.deploymentSlots = stage.deploymentSlots;
+            GameManager.Instance.maxEnemyCount = stage.enemyCount;
         }
 
         //DB에서 맵 로그 로드
