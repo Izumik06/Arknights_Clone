@@ -33,7 +33,6 @@ namespace Izumik
         }
         public List<Node> StringToRoot(string text)
         {
-            Debug.Log(text.Split(" ").Length);
             List<Node> cooList = new List<Node>();
             for (int i = 0; i < text.Split(" ").Length; i++)
             {

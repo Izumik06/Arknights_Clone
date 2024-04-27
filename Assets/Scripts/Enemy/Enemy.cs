@@ -28,6 +28,9 @@ namespace Izumik
         public float speed;
         public float range;
         public float posError;
+        public int deductTargetHp;
+
+        public bool spawnBySpawnManager;
 
         //target를 거쳐가는 경로 탐색 
         public void Findpath(List<Node> targets, Node spawnPoint)
@@ -46,7 +49,7 @@ namespace Izumik
                 }
             }
         }
-        private void Start()
+        public void StartMove()
         {
             StartCoroutine(Move());
         }
@@ -58,7 +61,7 @@ namespace Izumik
                 isWaiting = false;
                 while(Vector2.Distance(new Vector2(roots[i].x, roots[i].y), new Vector2(transform.position.x, transform.position.z)) >= 0.02)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(roots[i].x, transform.position.y, roots[i].y), speed * 0.01f);
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(roots[i].x, transform.position.y, roots[i].y), speed * 0.0125f);
                     moveLeft = (new Vector3(roots[i].x, transform.position.y, roots[i].y) - transform.position).x < 0;
                     yield return new WaitForSeconds(0.02f);
                 }
@@ -73,11 +76,30 @@ namespace Izumik
                     yield return null;
                 }
             }
+
+            //목표 지점에 도달하면 목표 Hp감소 / 자기 삭제
+            GameManager.Instance.enemyList.Remove(this);
+            
+            if (!this.gameObject.tag.Contains("Root"))
+            {
+                if (spawnBySpawnManager)
+                {
+                    GameManager.Instance.destroyedEnemyCount++;
+                }
+                GameManager.Instance.TargetHpDeduct(deductTargetHp);
+
+            }
+
+            Destroy(gameObject);
         }
     }
     
     public enum Attacktype
     {
         melee, ranged
+    }
+    public enum StatusType
+    {
+        weight, hp, atk, def, sdef, eresistance, attackspeed, speed, range
     }
 }

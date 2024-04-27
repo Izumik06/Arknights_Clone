@@ -13,7 +13,7 @@ namespace Izumik
         [Header("섬멸수/목표HP")]
         public int targetHP;
         public int maxEnemyCount;
-        public int curEnemyCount;
+        public int destroyedEnemyCount;
 
         [Header("코스트 관련")]
         public int cost;
@@ -21,6 +21,7 @@ namespace Izumik
         public float costSpeed;
 
         [Header("게임 진행 관련")]
+        public List<Enemy> enemyList;
         public bool isStartGame;
         public bool isPause;
         public int gameSpeed;
@@ -44,6 +45,12 @@ namespace Izumik
         {
             GetCost();
             Pause();
+        }
+        public void TargetHpDeduct(int lifePointPenalty)
+        {
+            targetHP -= lifePointPenalty;
+            UIManager.Instance.ShowTargetHpdown();
+            UIManager.Instance.UpdateSituationUI();
         }
         //퍼즈 실행, 퍼즈 해제시 원래 시간으로 실행
         private void Pause()

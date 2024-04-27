@@ -74,7 +74,6 @@ namespace Izumik
                     int count = dr.GetInt32(2);
                     float spawnDelay = (float)dr.GetDouble(3);
                     Node spawnPoint = new Node(dr.GetString(4));
-                    Debug.Log(dr.GetString(5));
                     List<Node> root = TypeTranslator.Instance.StringToRoot(dr.GetString(5));
                     List<WaitNode> waitNode;
                     if (!dr.IsDBNull(6))

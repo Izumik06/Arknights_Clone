@@ -142,6 +142,7 @@ MonoBehaviour:
     G: 0
     H: 0
   roots: []
+  waitNodes: []
   weight: 0
   curhp: 550
   maxhp: 550
@@ -154,6 +155,8 @@ MonoBehaviour:
   speed: 1
   range: 0
   posError: 0
+  deductTargetHp: 1
+  spawnBySpawnManager: 0
 --- !u!114 &2529616993663965976
 MonoBehaviour:
   m_ObjectHideFlags: 0

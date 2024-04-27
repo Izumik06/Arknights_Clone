@@ -155,6 +155,7 @@ namespace Izumik
             }
             test = NodeArray[2, 2];
         }
+        //테스트 용도
         void ShowFath()
         {
             Debug.Log(FinalNodeList.Count);
@@ -164,10 +165,6 @@ namespace Izumik
                 check.transform.position = new Vector3(FinalNodeList[i].x, 0, FinalNodeList[i].y);
             }
 
-        }
-        private void OnTriggerEnter(Collider other)
-        {
-            
         }
     }
 }
