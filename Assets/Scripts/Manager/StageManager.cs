@@ -67,7 +67,7 @@ namespace Izumik
                 dr = new SqlCommand("select * from [" + stage.stageName + "]", conn).ExecuteReader();
                 for (int i = 0; i < dispatchCount; i++)
                 {
-                    //튜플 읽어와서 SpawnManager로 변환
+                    //튜플 읽어와서 SpawnData로 변환
                     dr.Read();
                     float spawnTime = (float)dr.GetDouble(0);
                     string type = dr.GetString(1);

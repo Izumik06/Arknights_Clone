@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,17 +60,18 @@ namespace Izumik
         //몹 생성 후 게임메니저에 있는 리스트에 할당
         private void CreateEnemy(SpawnData data)
         {
-            for(int j = 0; j < data.count; j++)
+            for (int i = 0; i < data.count; i++)
             {
-                GameObject enemy = Instantiate(enemyList.Find(_ => _.GetComponent<Enemy>().enemyType == data.type));
+                GameObject prefab = enemyList.Find(enemy => enemy.name == data.type);
+                GameObject enemy = Instantiate(prefab);
                 enemy.transform.position = new Vector3(data.spawnPoint.x, 0, data.spawnPoint.y);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 enemyScript.waitNodes = data.waitNodes;
                 enemyScript.targetNode = data.defensePoint;
 
-                if(data.posError.Count != 0)
+                if (data.posError.Count != 0)
                 {
-                    enemyScript.posError = data.posError[j % data.posError.Count];
+                    enemyScript.posError = data.posError[i % data.posError.Count];
                 }
                 if (data.useAstar)
                 {

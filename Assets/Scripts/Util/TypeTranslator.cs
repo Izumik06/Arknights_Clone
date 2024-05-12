@@ -42,6 +42,7 @@ namespace Izumik
 
             return cooList;
         }
+
         public List<WaitNode> StringToWaitnode(string text)
         {
             List<WaitNode> cooList = new List<WaitNode>();

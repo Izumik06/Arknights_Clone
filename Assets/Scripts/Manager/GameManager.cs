@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -92,6 +93,56 @@ namespace Izumik
                 }
                 return instance;
             }
+        }
+    }
+
+    //공통 스텟
+    [Serializable]
+    public class Stat
+    {
+        public string name;
+        public int hp;
+        public int atk;
+        public int def;
+        public int sdef; //마저
+        public float attackspeed;
+        public AttackType attacktype;
+
+        public Stat(string name, int hp, int atk, int def, int sdef, float attackspeed, AttackType attacktype)
+        {
+            this.name = name;
+            this.hp = hp;
+            this.atk = atk;
+            this.def = def;
+            this.sdef = sdef;
+            this.attackspeed = attackspeed;
+            this.attacktype = attacktype;
+        }
+    }
+    //적 스텟
+    [Serializable]
+    public class EnemyStat : Stat
+    {
+        public bool isFlying;
+        public int weight;
+        public int edef; //원소 내성
+        public int eresistance; //원소 피해 저항
+        public float speed;
+        public float range;
+        public int lifePointPenalty;
+        public EnemyType enemyType;
+
+        public EnemyStat(string name, int hp, int atk, int def, int sdef, int edef, int eresistance, float attackspeed, float speed, bool isFlying, int weight, float range, EnemyType enemyType, AttackType attacktype, int lifePointPenalty)
+            : base(name, hp, atk, def, sdef, attackspeed, attacktype)
+        {
+            this.isFlying = isFlying;
+            this.weight = weight;
+            this.edef = edef;
+            this.eresistance = eresistance;
+            this.speed = speed;
+            this.range = range;
+            this.enemyType = enemyType;
+            this.lifePointPenalty = lifePointPenalty;
         }
     }
 }
