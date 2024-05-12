@@ -62,8 +62,7 @@ namespace Izumik
         {
             for (int i = 0; i < data.count; i++)
             {
-                GameObject prefab = enemyList.Find(enemy => enemy.name == data.type);
-                GameObject enemy = Instantiate(prefab);
+                GameObject enemy = Instantiate(enemyList.Find(_ => _.name == data.type));
                 enemy.transform.position = new Vector3(data.spawnPoint.x, 0, data.spawnPoint.y);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 enemyScript.waitNodes = data.waitNodes;

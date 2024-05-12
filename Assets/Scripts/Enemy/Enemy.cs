@@ -23,7 +23,7 @@ namespace Izumik
 
         public bool spawnBySpawnManager;
 
-        private void Awake()
+        private void Start()
         {
             GetStat();
         }
@@ -34,7 +34,7 @@ namespace Izumik
             using (SqlConnection conn = new SqlConnection(connectString))
             {
                 conn.Open();
-                SqlDataReader sd = new SqlCommand($"select * from EnemyStats where Name={baseStat.name}", conn).ExecuteReader();
+                SqlDataReader sd = new SqlCommand($"select * from [EnemyStats] where Type='{baseStat.name}'", conn).ExecuteReader();
                 sd.Read();
                 string name = sd.GetString(0);
                 int hp = sd.GetInt32(1);
@@ -75,10 +75,12 @@ namespace Izumik
         }
         public void StartMove()
         {
+            Debug.Log("이동 시작");
             StartCoroutine(Move());
         }
         IEnumerator Move()
         {
+            Debug.Log("코루틴 실행");
             //이동
             for (int i = 0; i < roots.Count; i++)
             {
